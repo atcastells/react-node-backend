@@ -1,13 +1,24 @@
-import express, { json } from 'express';
+import express from 'express';
+import AppRoutes from './app.routes'
 
-const url = process.env.URL || 'http://localhost'
-const app = express();
-const port  = 3000;
+class App {
+    public express = require('express')
+    private routes;
 
-app.get('/', (req, res) => {
-    res.send('Node / Angular test')
-})
+    constructor(){
+        this.express = express();
+        this.configureApp();
+        this.routes = new AppRoutes(this.express);
+        this.initializeControllers();
+    }
 
-app.listen(port, () => {
-	return console.log(`server is listening on port ${port}. \n Open ${url}:${port}`)
-})
+    private configureApp() {
+        this.express.use(express.json({type: 'application/json'}));
+    }
+
+    private initializeControllers() {
+        this.routes.registerRoutes();
+    }
+}
+
+export default new App().express
