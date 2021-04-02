@@ -1,4 +1,7 @@
 {
+    "env": {
+        "node": true
+    },
     "defaultSeverity": "error",
     "extends": [
         "tslint:recommended"
