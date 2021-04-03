@@ -14,7 +14,7 @@ const Form = (props: any) => {
       password,
     }
 
-    const response = axios.post('http://localhost:3001/api/auth', authUser)
+    const response = axios.post('http://159.65.81.40:3001/api/auth', authUser)
 
     response
       .then((res) => {
