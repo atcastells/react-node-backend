@@ -1,0 +1,24 @@
+.container {
+    margin-bottom: 2em;
+}
+
+div.server-data {
+    /*height: 100px;*/
+    width: 700px;
+}
+
+.info-row {
+    margin: 1em;
+    display: flex;
+    border-bottom: 1px white solid;
+}
+
+
+.info-row span {
+    margin-left: 0.5em;
+    flex: 1;
+}
+
+.tag-info {
+    width: 200px;
+}

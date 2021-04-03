@@ -13,7 +13,9 @@ class App {
     }
 
     private configureApp() {
+        const cors = require('cors');
         this.express.use(express.json({type: 'application/json'}));
+        this.express.use(cors())
     }
 
     private initializeControllers() {
