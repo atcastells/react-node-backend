@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { AuthModel } from '../auth/auth.model'
 import { useState } from 'react'
+import { APIURL } from '../constants'
 
 const Form = (props: any) => {
   const [login, setLogin] = useState('')
@@ -14,7 +15,7 @@ const Form = (props: any) => {
       password,
     }
 
-    const response = axios.post('http://159.65.81.40:3001/api/auth', authUser)
+    const response = axios.post(`${APIURL}/api/auth`, authUser)
 
     response
       .then((res) => {
