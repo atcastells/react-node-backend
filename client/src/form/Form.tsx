@@ -1,7 +1,5 @@
-import axios from 'axios'
 import { AuthModel } from '../auth/auth.model'
 import { useState } from 'react'
-import { APIURL } from '../constants'
 
 const Form = (props: any) => {
   const [login, setLogin] = useState('')
@@ -15,15 +13,7 @@ const Form = (props: any) => {
       password,
     }
 
-    const response = axios.post(`${APIURL}/api/auth`, authUser)
-
-    response
-      .then((res) => {
-        props.responseFromServer(res)
-      })
-      .catch((err) => {
-        props.responseFromServer(err.response)
-      })
+    props.submit(authUser)
   }
 
   const handleLoginChange = (event: any) => {
