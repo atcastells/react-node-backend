@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import './Auth.css'
 import Form from '../form/Form'
+import { AuthModel } from './auth.model'
+import { APIURL } from '../constants'
+import axios from 'axios'
 
 function AuthPage() {
   const submitText = 'Login'
@@ -17,11 +20,27 @@ function AuthPage() {
     setAuthData((arr) => [data, ...arr.slice(0, maxLogLenght)])
     console.log(response)
   }
+  const getUserData = (user: AuthModel) => {
+    const authUser: AuthModel = {
+      login: user.login,
+      password: user.password,
+    }
+
+    const response = axios.post(`${APIURL}/api/auth`, authUser)
+
+    response
+      .then((res) => {
+        handleServerData(res)
+      })
+      .catch((err) => {
+        handleServerData(err.response)
+      })
+  }
 
   return (
     <div>
       <div className={'container'}>
-        <Form id={'login-form'} submitText={submitText} responseFromServer={handleServerData} />
+        <Form id={'login-form'} submitText={submitText} submit={getUserData} />
       </div>
       <div className={'container'}>
         <div className={'card server-data'}>
